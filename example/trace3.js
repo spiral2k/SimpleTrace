@@ -1,8 +1,7 @@
 const SimpleTrace = require("../src/index");
 
 const profiler = new SimpleTrace("Simple prof 2", {
-  writeFile: true,
-  logs: true
+  writeFile: true
 });
 
 module.exports = (function() {

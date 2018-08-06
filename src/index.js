@@ -48,7 +48,7 @@ Profiler.prototype.convertToMs = function(time) {
 };
 
 Profiler.prototype.end = function() {
-  let content = `${this.name} results:\n--------------------\n\n`;
+  let content = `${this.name} result:\n--------------------\n\n`;
   const length = this.steps.length;
   for (let i = 0; i < length; i++) {
     const time = this.steps[i].time - this.now;
