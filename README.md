@@ -57,29 +57,32 @@ If writeFile is active SimpleTrace will save the file `SimpleTrace-<name>-<Date.
 
     const SimpleTrace = require("simpletrace");
 
-    const profiler = new SimpleTrace("Beatle Test", {
+    const profiler = new SimpleTrace("Debug awesomeFunction", {
     writeFile: true,
     logs: true
     });
 
-    module.exports = (function() {
-      profiler.step("Hi John!");
+    module.exports = (function awesomeFunction() {
+      profiler.step("Starting awesomeFunction");
 
-      setTimeout(() => {
-        profiler.step("John, Hi again!");
+      profiler.step("Before getSomeAwesomeData");
+      const data = getSomeAwesomeData();
+      profiler.step("After getSomeAwesomeData");
+ 
+      profiler.step("Before dataHashing");
+      const hashing = dataHashing(data); // <-- This is our bottleneck
+      profiler.step("After dataHashing");
 
-        setTimeout(() => {
-          profiler.step("Bye John!");
-          profiler.end();
-        }, 3500);
-      }, 2000);
+      profiler.end();
     })();
 
 The output of the file:
 
-    Beatle Test results:
+    Debug awesomeFunction results:
     --------------------
 
-    Hi John! - 0 ms
-    John, Hi again! - 2 sec
-    Bye John! - 5.501 sec
+    Starting awesomeFunction - 0 ms
+    Before getSomeAwesomeData - 11 ms
+    After getSomeAwesomeData - 19.329 ms
+    Before dataHashing - 19.330 ms
+    After dataHashing - 5.501 sec
