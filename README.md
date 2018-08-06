@@ -55,12 +55,12 @@ If writeFile is active SimpleTrace will save the file `SimpleTrace-<name>-<Date.
 
 ## Example
 
-const SimpleTrace = require("simpletrace");
+    const SimpleTrace = require("simpletrace");
 
-const profiler = new SimpleTrace("Beatle Test", {
-writeFile: true,
-logs: true
-});
+    const profiler = new SimpleTrace("Beatle Test", {
+    writeFile: true,
+    logs: true
+    });
 
     module.exports = (function() {
       profiler.step("Hi John!");
