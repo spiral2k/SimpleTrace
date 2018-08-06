@@ -10,7 +10,7 @@ module.exports = (function() {
     prof.step("Paul, Hi again!");
 
     setTimeout(() => {
-      prof.step("Bey Paul!");
+      prof.step("Bye Paul!");
       prof.end();
     }, 5500);
   }, 2000);

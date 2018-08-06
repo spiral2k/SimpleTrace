@@ -47,6 +47,18 @@ Profiler.prototype.convertToMs = function(time) {
   return `${time} ms`;
 };
 
+Profiler.prototype.getWritePath = function() {
+  if (this.options.dir) {
+    const writeDir = `${process.cwd()}/${this.options.dir}`;
+    if (!fs.existsSync(writeDir)) {
+      fs.mkdirSync(writeDir);
+    }
+    return writeDir;
+  }
+
+  return process.cwd();
+};
+
 Profiler.prototype.end = function() {
   let content = `${this.name} result:\n--------------------\n\n`;
   const length = this.steps.length;
@@ -59,7 +71,7 @@ Profiler.prototype.end = function() {
 
   if (this.options.writeFile) {
     fs.writeFile(
-      `${process.cwd()}/SimpleTrace-${this.name}-${Date.now()}.txt`,
+      `${this.getWritePath()}/SimpleTrace-${this.name}-${Date.now()}.txt`,
       content,
       function(err) {
         if (err) throw err;

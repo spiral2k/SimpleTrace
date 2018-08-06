@@ -11,7 +11,7 @@ module.exports = (function() {
     profiler.step("John, Hi again!");
 
     setTimeout(() => {
-      profiler.step("Bey John!");
+      profiler.step("Bye John!");
       profiler.end();
     }, 3500);
   }, 2000);

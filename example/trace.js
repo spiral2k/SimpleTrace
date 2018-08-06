@@ -12,7 +12,7 @@ module.exports = (function() {
     prof.step("George, Hi again!");
 
     setTimeout(() => {
-      prof.step("Bey George!");
+      prof.step("Bye George!");
     }, 1500);
   }, 500);
 })();
