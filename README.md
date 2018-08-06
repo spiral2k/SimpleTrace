@@ -70,7 +70,7 @@ If writeFile is active SimpleTrace will save the file `SimpleTrace-<name>-<Date.
       profiler.step("After getSomeAwesomeData");
  
       profiler.step("Before dataHashing");
-      const hashing = dataHashing(data);
+      const hashing = dataHashing(data); // <-- This is our bottleneck
       profiler.step("After dataHashing");
 
       profiler.end();
@@ -85,4 +85,4 @@ The output of the file:
     Before getSomeAwesomeData - 11 ms
     After getSomeAwesomeData - 19.329 ms
     Before dataHashing - 19.330 ms
-    After dataHashing - 5.501 sec // <-- This is our bottleneck
+    After dataHashing - 5.501 sec
