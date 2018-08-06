@@ -35,11 +35,11 @@ You can even create multiple profilers that run in parallel!
 
 ### options
 
-| property  | Default         | Type    | Description                                                                                         |
+| Name  | Default         | Type    | Description                                                                                         |
 | --------- | --------------- | ------- | --------------------------------------------------------------------------------------------------- |
 | writeFile | false           | Boolean | write a file in the root directory of the project with the results                                  |
 | logs      | false           | Boolean | log the results to the console                                                                      |
-| dir       | './simpleTrace' | String  | change the path of the output file, if the path doesn't exist SimpleTrace will create the directory |
+| dir       | './simpleTrace' | String  | change the directory of the output file, if the directory doesn't exist SimpleTrace will create it |
 
 ## API
 
@@ -55,12 +55,12 @@ If writeFile is active SimpleTrace will save the file `SimpleTrace-<name>-<Date.
 
 ## Example
 
-const SimpleTrace = require("simpletrace");
+    const SimpleTrace = require("simpletrace");
 
-const profiler = new SimpleTrace("Beatle Test", {
-writeFile: true,
-logs: true
-});
+    const profiler = new SimpleTrace("Beatle Test", {
+    writeFile: true,
+    logs: true
+    });
 
     module.exports = (function() {
       profiler.step("Hi John!");
