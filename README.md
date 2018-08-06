@@ -4,21 +4,17 @@ Simple profiling mechanism to find bottlenecks in your code.
 
 ### To begin
 
-1.  install it
-
+Install it
 
     npm i simpletrace -D
 
-2.  Require it
-
+Require it
 
     // ES6 modules
-    
-    import simpleTrace from "simpletrace'
+    import simpleTrace from "simpletrace';
 
     // CommonJS
-    
-    const simpleTrace = require("simpletrace")
+    const simpleTrace = require("simpletrace");
 
 
 ### Usage
@@ -27,6 +23,11 @@ Simple profiling mechanism to find bottlenecks in your code.
       writeFile: true,
       logs: false
     });
+
+### TODO:
+
+- [ ] option change output file path
+- [ ] singleton
 
 ### options
 
@@ -78,7 +79,3 @@ the output of the file:
     inside timeout - 2.012 sec
     inside second timeout - 5.517 sec
 
-TODO:
-
-- [ ] option change output file path
-- [ ] singleton
