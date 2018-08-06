@@ -1,6 +1,21 @@
 const winston = require("winston");
 
 function Profiler(name, options = {}) {
+  if (!name) {
+    throw new Error("SimpleTrace - name should not be empty");
+  }
+
+  if (typeof name !== "string") {
+    throw new Error("SimpleTrace - name should be a string");
+  }
+
+  const ProfilerName = name.replace(/[^A-Z0-9]/gi, "_");
+
+  if (!Profiler.instance) Profiler.instance = {};
+
+  if (Profiler.instance[ProfilerName]) return Profiler.instance[ProfilerName];
+  Profiler.instance[ProfilerName] = this;
+
   this.name = name;
   this.now = Date.now();
   this.steps = [];
