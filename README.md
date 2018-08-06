@@ -16,7 +16,6 @@ Require it
     // CommonJS
     const SimpleTrace = require("simpletrace");
 
-
 ### Usage
 
     const Profiler = new SimpleTrace("Simple prof", {
@@ -26,8 +25,8 @@ Require it
 
 ### TODO:
 
-- [ ] option change output file path
-- [ ] singleton
+- [ ] Option change output file path
+- [ ] Singleton
 
 ### options
 
@@ -40,11 +39,13 @@ Require it
 
 ### .step
 
-insert new step to the log list
+Insert new step to the log list
 
 ### .end
 
-End the profiling process end output to console or/and file.
+End the profiling task and output to the console or/and file.
+
+If writeFile is active SimpleTrace will save the file `SimpleTrace-<name>-<Date.now()>.txt` in the root directory of the project.
 
 ## Example
 
@@ -70,7 +71,7 @@ End the profiling process end output to console or/and file.
       }, 2000);
     })();
 
-the output of the file:
+The output of the file:
 
     Simple prof results:
     --------------------
