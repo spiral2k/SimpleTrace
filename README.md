@@ -39,7 +39,7 @@ You can even create multiple profilers that run in parallel!
 | --------- | ------- | ------------------------------ | ------------------------------ |
 | writeFile | false   | Boolean | write a file in the root directory of the project with the results   |
 | logs      | false   | Boolean | log the results to the console |
-| logs      | root folder | String | change output file path, if the path doesn't exist SimpleTrace will create the directory |
+| dir      | root folder | String | change output file path, if the path doesn't exist SimpleTrace will create the directory |
 
 ## API
 
