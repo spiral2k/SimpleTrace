@@ -59,34 +59,34 @@ If writeFile is active SimpleTrace will save the file `SimpleTrace-<name>-<Date.
 
 ## Example
 
-    const Profiler = require("../src/index");
+const SimpleTrace = require("simpletrace");
 
-    const prof = new Profiler("Simple prof", {
-      writeFile: true,
-      logs: false
-    });
+const profiler = new SimpleTrace("Beatle Test", {
+  writeFile: true,
+  logs: true
+});
 
-    module.exports = (function() {
-      prof.step("starting trace");
-      console.log("Hi!");
+module.exports = (function() {
+  profiler.step("Hi John!");
 
-      setTimeout(() => {
-        prof.step("inside timeout");
-        console.log("Hi again!");
+  setTimeout(() => {
+    profiler.step("John, Hi again!");
 
-        setTimeout(() => {
-          prof.step("inside second timeout");
-          prof.end();
-        }, 3500);
-      }, 2000);
-    })();
+    setTimeout(() => {
+      profiler.step("Bey John!");
+      profiler.end();
+    }, 3500);
+  }, 2000);
+})();
+
 
 The output of the file:
 
-    Simple prof results:
+    Beatle Test results:
     --------------------
 
-    starting trace - 8 ms
-    inside timeout - 2.012 sec
-    inside second timeout - 5.517 sec
+    Hi John! - 0 ms
+    John, Hi again! - 2 sec
+    Bey John! - 5.501 sec
+
 
