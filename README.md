@@ -35,7 +35,7 @@ You can even create multiple profilers that run in parallel!
 
 ### options
 
-| property  | Default         | Type    | Description                                                                                         |
+| Name  | Default         | Type    | Description                                                                                         |
 | --------- | --------------- | ------- | --------------------------------------------------------------------------------------------------- |
 | writeFile | false           | Boolean | write a file in the root directory of the project with the results                                  |
 | logs      | false           | Boolean | log the results to the console                                                                      |
