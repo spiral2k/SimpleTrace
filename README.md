@@ -13,9 +13,11 @@ Simple profiling mechanism to find bottlenecks in your code.
 
 
     // ES6 modules
+    
     import simpleTrace from "simpletrace'
 
     // CommonJS
+    
     const simpleTrace = require("simpletrace")
 
 
