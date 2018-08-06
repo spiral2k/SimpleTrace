@@ -2,7 +2,7 @@ const SimpleTrace = require("../src/index");
 
 const profiler = new SimpleTrace("Simple prof 3", {
   writeFile: true,
-  dir: "./trace"
+  dir: "./customTrace" // will create 'customTrace' directory in the root folder
 });
 
 module.exports = (function() {

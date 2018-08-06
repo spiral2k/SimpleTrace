@@ -48,15 +48,11 @@ Profiler.prototype.convertToMs = function(time) {
 };
 
 Profiler.prototype.getWritePath = function() {
-  if (this.options.dir) {
-    const writeDir = `${process.cwd()}/${this.options.dir}`;
-    if (!fs.existsSync(writeDir)) {
-      fs.mkdirSync(writeDir);
-    }
-    return writeDir;
+  const writeDir = `${process.cwd()}/${this.options.dir || "simpleTrace"}`;
+  if (!fs.existsSync(writeDir)) {
+    fs.mkdirSync(writeDir);
   }
-
-  return process.cwd();
+  return writeDir;
 };
 
 Profiler.prototype.end = function() {
