@@ -31,19 +31,15 @@ If you want to debug across multiple files with the same profiler, just ask Simp
 If you debug across multiple files with the same profiler and you're not sure which file will run first, pass the options object to each constructor `(new SimpleTrace)`
 
 
-You can create multiple profilers that run in parallel!
-
-### TODO:
-- [X] Singleton
-- [ ] Option to change output file path
-
+You can even create multiple profilers that run in parallel!
 
 ### options
 
-| property  | Default | Description                    |
-| --------- | ------- | ------------------------------ |
-| writeFile | false   | write a file in the root directory of the project with the results   |
-| logs      | false   | log the results to the console |
+| property  | Default | Type                    | Description                    |
+| --------- | ------- | ------------------------------ | ------------------------------ |
+| writeFile | false   | Boolean | write a file in the root directory of the project with the results   |
+| logs      | false   | Boolean | log the results to the console |
+| logs      | root folder | String | change output file path, if the path doesn't exist SimpleTrace will create the directory |
 
 ## API
 
