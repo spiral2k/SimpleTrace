@@ -1,6 +1,6 @@
 {
   "name": "simpletrace",
-  "version": "1.0.0",
+  "version": "0.0.5",
   "description": "Simple profiling mechanism to find your bottlenecks",
   "main": "./lib/index.js",
   "scripts": {
@@ -22,21 +22,21 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/flexdinesh/npm-module-boilerplate.git"
+    "url": "git+https://github.com/spiral2k/SimpleTrace.git"
   },
   "keywords": [
-    "boilerplate",
-    "npm",
-    "module",
     "node",
-    "javascript"
+    "nodejs",
+    "trace",
+    "debug",
+    "debugging-tool"
   ],
-  "author": "Dinesh Pandiyan <flexdinesh@gmail.com>",
+  "author": "Meni Edri <meniedri1@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/flexdinesh/npm-module-boilerplate/issues"
+    "url": "https://github.com/spiral2k/SimpleTrace/issues"
   },
-  "homepage": "https://github.com/flexdinesh/npm-module-boilerplate#readme",
+  "homepage": "https://github.com/spiral2k/SimpleTrace#readme",
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-eslint": "^8.2.1",
