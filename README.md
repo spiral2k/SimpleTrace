@@ -35,7 +35,7 @@ You can create multiple profilers that run in parallel!
 
 ### TODO:
 - [X] Singleton
-- [ ] Option change output file path
+- [ ] Option to change output file path
 
 
 ### options
