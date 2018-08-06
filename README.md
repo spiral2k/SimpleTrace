@@ -66,18 +66,18 @@ const profiler = new SimpleTrace("Beatle Test", {
   logs: true
 });
 
-module.exports = (function() {
-  profiler.step("Hi John!");
+    module.exports = (function() {
+      profiler.step("Hi John!");
 
-  setTimeout(() => {
-    profiler.step("John, Hi again!");
+      setTimeout(() => {
+        profiler.step("John, Hi again!");
 
-    setTimeout(() => {
-      profiler.step("Bey John!");
-      profiler.end();
-    }, 3500);
-  }, 2000);
-})();
+        setTimeout(() => {
+          profiler.step("Bey John!");
+          profiler.end();
+        }, 3500);
+      }, 2000);
+    })();
 
 
 The output of the file:
