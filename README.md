@@ -11,15 +11,15 @@ Install it
 Require it
 
     // ES6 modules
-    import simpleTrace from "simpletrace';
+    import SimpleTrace from "simpletrace';
 
     // CommonJS
-    const simpleTrace = require("simpletrace");
+    const SimpleTrace = require("simpletrace");
 
 
 ### Usage
 
-    const Profiler = new simpleTrace("Simple prof", {
+    const Profiler = new SimpleTrace("Simple prof", {
       writeFile: true,
       logs: false
     });
