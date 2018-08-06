@@ -1,17 +1,15 @@
 const Profiler = require("../src/index");
 
 const prof = new Profiler("Simple prof 2", {
-  writeFile: true,
-  logs: false
+  writeFile: false,
+  logs: true
 });
 
 module.exports = (function() {
   prof.step("Hi John!");
-  console.log("Hi John!");
 
   setTimeout(() => {
     prof.step("Joahn, Hi again!");
-    console.log("Joahn, Hi again!");
 
     setTimeout(() => {
       prof.step("Bey John!");

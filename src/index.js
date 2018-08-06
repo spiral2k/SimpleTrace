@@ -1,4 +1,4 @@
-const winston = require("winston");
+const fs = require("fs");
 
 function Profiler(name, options = {}) {
   if (!name) {
@@ -21,30 +21,11 @@ function Profiler(name, options = {}) {
   this.steps = [];
   this.options = options;
 
-  this.logger = winston.createLogger({
-    format: winston.format.combine(this.loggerFormat())
-  });
-
-  if (this.options.logs) {
-    this.logger.add(
-      new winston.transports.Console({
-        level: "debug"
-      })
-    );
-  }
-
-  if (this.options.writeFile) {
-    this.logger.add(
-      new winston.transports.File({
-        filename: `SimpleTrace-${this.name}-${Date.now()}.txt`,
-        level: "info"
-      })
-    );
-  }
+  this.logger = this.log;
 }
 
-Profiler.prototype.loggerFormat = function() {
-  return winston.format.printf(info => `${info.message}`);
+Profiler.prototype.log = function(text) {
+  return process.stdout.write(`\n${text}`, "utf8");
 };
 
 Profiler.prototype.getTime = function() {
@@ -53,7 +34,9 @@ Profiler.prototype.getTime = function() {
 
 Profiler.prototype.step = function(stepName) {
   this.steps.push({ name: stepName, time: this.getTime() });
-  if (this.options.logs) this.logger.debug(`SimpleTrace step: - ${stepName}`);
+  if (this.options.logs) {
+    this.logger(`SimpleTrace ${this.name} step: ${stepName}`);
+  }
 };
 
 Profiler.prototype.convertToSec = function(time) {
@@ -71,15 +54,23 @@ Profiler.prototype.end = function() {
     const time = this.steps[i].time - this.now;
     content += `${this.steps[i].name} - ${
       time > 999 ? this.convertToSec(time) : this.convertToMs(time)
-    } \n`;
+    }\n`;
   }
 
-  if (this.options.writeFile || this.options.logs) {
-    this.logger.info(`${this.options.writeFile ? "" : "\n\n"}${content}`);
+  if (this.options.writeFile) {
+    fs.writeFile(
+      `${process.cwd()}/SimpleTrace-${this.name}-${Date.now()}.txt`,
+      content,
+      function(err) {
+        if (err) throw err;
+        this.logger(`SimpleTrace: ${this.name} ended succesfully!`);
+      }
+    );
   }
 
-  if (this.options.logs) {
-    this.logger.debug("SimpleTrace ended succesfully!");
+  if (!this.options.writeFile && this.options.logs) {
+    this.logger(`\n${content}`);
+    this.logger(`SimpleTrace: ${this.name} ended succesfully!`);
   }
 };
 
