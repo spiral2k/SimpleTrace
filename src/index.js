@@ -64,7 +64,7 @@ Profiler.prototype.end = function() {
       function(err) {
         if (err) throw err;
         this.logger(`SimpleTrace: ${this.name} ended succesfully!`);
-      }
+      }.bind(this)
     );
   }
 

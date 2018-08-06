@@ -11,6 +11,7 @@
     "no-plusplus": 0,
     "quotes": 0,
     "function-paren-newline": 0,
-    "space-before-function-paren": 0
+    "space-before-function-paren": 0,
+    "prefer-arrow-callback": 0
   }
 }

@@ -1,19 +1,19 @@
-const Profiler = require("../src/index");
+const SimpleTrace = require("../src/index");
 
-const prof = new Profiler("Simple prof 2", {
-  writeFile: false,
+const profiler = new SimpleTrace("Simple prof 2", {
+  writeFile: true,
   logs: true
 });
 
 module.exports = (function() {
-  prof.step("Hi John!");
+  profiler.step("Hi John!");
 
   setTimeout(() => {
-    prof.step("Joahn, Hi again!");
+    profiler.step("John, Hi again!");
 
     setTimeout(() => {
-      prof.step("Bey John!");
-      prof.end();
+      profiler.step("Bey John!");
+      profiler.end();
     }, 3500);
   }, 2000);
 })();
