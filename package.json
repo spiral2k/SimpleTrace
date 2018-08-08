@@ -1,7 +1,7 @@
 {
   "name": "simpletrace",
-  "version": "0.2.1",
-  "description": "Simple profiling mechanism to find your bottlenecks",
+  "version": "0.2.2",
+  "description": "Simple but powerful profiling mechanism to find bottlenecks in your code.",
   "main": "./lib/index.js",
   "scripts": {
     "clean": "rimraf lib",
@@ -29,7 +29,16 @@
     "nodejs",
     "trace",
     "debug",
-    "debugging-tool"
+    "debugging-tool",
+    "profiler",
+    "profiling",
+    "profiling-library",
+    "monitor-performance",
+    "performance",
+    "performance-monitoring",
+    "performance-metrics",
+    "performance-testing",
+    "performance-tuning"
   ],
   "author": "Meni Edri <meniedri1@gmail.com>",
   "license": "MIT",
