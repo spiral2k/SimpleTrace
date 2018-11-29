@@ -42,18 +42,6 @@ describe("Simple QA test", () => {
     }).to.not.throw();
   });
 
-
-  it("Should throw when no args at all", () => {
-    expect(function() {
-      const profiler = new Profiler("Beatles", {
-        writeFile: true,
-        logs: true
-      });
-      profiler.step("1963");
-      profiler.end();
-    }).to.throw();
-  });
-
   it("Should call the callback at the end", () => {
     const cb = sinon.spy();
     const profiler = new Profiler("Beatles", {
@@ -66,15 +54,22 @@ describe("Simple QA test", () => {
 });
 
 describe("Args Validation", () => {
-  it("should throw 'name should not be empty'", () => {
-    expect(function() {
-      const profiler = new Profiler("");
-    }).to.throw(/SimpleTrace - name should not be empty/);
+  it("should throw when name empty string", () => {
+    expect(function() { new Profiler("") }).to.throw(Error, "SimpleTrace: name should not be empty");
   });
 
-  it("should throw 'name should be a string'", () => {
-    expect(function() {
-      const profiler = new Profiler(true);
-    }).to.throw(/SimpleTrace - name should be a string/);
+  it("should throw when name not a string", () => {
+    expect(function() { new Profiler(true) }).to.throw(Error, "SimpleTrace: name should be a string");
   });
+
+  it("Should throw when no args at all", () => {
+    const func = function() { new Profiler() }
+    expect(func).to.throw(Error, 'SimpleTrace: name should not be empty');
+  });
+
+  it("Should throw when options not an object", () => {
+    const func = function() { new Profiler("Beatles", null) }
+    expect(func).to.throw(Error, 'SimpleTrace: options should be object');
+  });
+
 });

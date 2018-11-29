@@ -2,11 +2,15 @@ const fs = require("fs");
 
 function Profiler(name, options = {}) {
   if (!name) {
-    throw new Error("SimpleTrace - name should not be empty");
+    throw new Error("SimpleTrace: name should not be empty");
   }
 
   if (typeof name !== "string") {
-    throw new Error("SimpleTrace - name should be a string");
+    throw new Error("SimpleTrace: name should be a string");
+  }
+
+  if ((typeof options !== "undefined" && typeof options !== 'object') || options === null) {
+    throw new Error("SimpleTrace: options should be object");
   }
 
   const ProfilerName = name.replace(/[^A-Z0-9]/gi, "_");
