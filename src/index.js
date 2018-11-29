@@ -20,11 +20,9 @@ function Profiler(name, options = {}) {
   this.now = Date.now();
   this.steps = [];
   this.options = options;
-
-  this.logger = this.log;
 }
 
-Profiler.prototype.log = function(text) {
+Profiler.prototype.logger = function(text) {
   return process.stdout.write(`\n${text}`, "utf8");
 };
 
@@ -55,7 +53,9 @@ Profiler.prototype.getWritePath = function() {
   return writeDir;
 };
 
-Profiler.prototype.end = function() {
+Profiler.prototype.end = function(callback) {
+  if (callback && typeof callback === 'function') this.cb = callback;
+
   let content = `${this.name} result:\n--------------------\n\n`;
   const length = this.steps.length;
   for (let i = 0; i < length; i++) {
@@ -63,22 +63,28 @@ Profiler.prototype.end = function() {
     content += `${this.steps[i].name} - ${
       time > 999 ? this.convertToSec(time) : this.convertToMs(time)
     }\n`;
+
+    if ((i + 1) >= length) content += `\n--------------------\n\n`;
   }
 
   if (this.options.writeFile) {
-    fs.writeFile(
-      `${this.getWritePath()}/SimpleTrace-${this.name}-${Date.now()}.txt`,
-      content,
-      function(err) {
-        if (err) throw err;
-        this.logger(`SimpleTrace: ${this.name} ended succesfully!`);
-      }.bind(this)
-    );
+    const writeStream = fs.createWriteStream(`${this.getWritePath()}/SimpleTrace-${this.name}-${Date.now()}.txt`);
+    writeStream.write(content, 'utf8');
+    writeStream.end();
+
+    writeStream.on('finish', () => {
+      if (this.cb) this.cb();
+      this.logger(`SimpleTrace: ${this.name} ended succesfully!`);
+    });
+
+    writeStream.on('error', (er) => {
+      this.logger('SimpleTrace Error:', er);
+    });
   }
 
-  if (!this.options.writeFile && this.options.logs) {
+  if (this.options.logs) {
     this.logger(`\n${content}`);
-    this.logger(`SimpleTrace: ${this.name} ended succesfully!`);
+    if (!this.options.writeFile) this.logger(`SimpleTrace: ${this.name} ended succesfully!`);
   }
 };
 

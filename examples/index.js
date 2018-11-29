@@ -1,9 +1,7 @@
 // singleton
-require("./trace");
-require("./trace2");
-
+require("./example");
+require("./example2");
 // double
-require("./trace3");
-
+require("./example3");
 // Create dir
-require("./trace4");
+require("./example4");

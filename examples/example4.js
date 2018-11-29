@@ -1,8 +1,9 @@
 const SimpleTrace = require("../src/index");
 
-const profiler = new SimpleTrace("Simple prof 3", {
+const profiler = new SimpleTrace("Ringo Starr", {
   writeFile: true,
-  dir: "./customTrace" // will create 'customTrace' directory in the root folder
+  logs: true,
+  dir: "./customTrace" // will create 'customTrace' directory in the root folder for that profiler
 });
 
 module.exports = (function() {
@@ -13,7 +14,7 @@ module.exports = (function() {
 
     setTimeout(() => {
       profiler.step("Bye Ringo!");
-      profiler.end();
+      profiler.end(() => console.log('callback at the end'));
     }, 3500);
   }, 2000);
-})();
+}());

@@ -1,7 +1,7 @@
-const Profiler = require("../src/index");
+const SimpleTrace = require("../src/index");
 
-// return the instance of "Simple prof";
-const prof = new Profiler("Simple prof");
+// return the instance of "George and Paul";
+const prof = new SimpleTrace("George and Paul");
 
 module.exports = (function() {
   prof.step("Hi Paul!");
@@ -14,4 +14,4 @@ module.exports = (function() {
       prof.end();
     }, 5500);
   }, 2000);
-})();
+}());
