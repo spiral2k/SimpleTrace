@@ -43,17 +43,19 @@ You can even create multiple profilers that run in parallel!
 
 ## API
 
-### .step
+### .step()
 
 Insert new step to the log list
 
-### .end
+### .end(callback)
 
 End the profiling task and output to the console or/and file.
 
 If writeFile is active SimpleTrace will save the file `SimpleTrace-<name>-<Date.now()>.txt` in the output directory.
 
-## Example
+if you passed a callback, SimpleTrace will call the callback when the trace file created (if writeFile is true)
+
+## Simple Example
 
     const SimpleTrace = require("simpletrace");
 
