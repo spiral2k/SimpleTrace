@@ -67,8 +67,9 @@ Profiler.prototype.end = function(callback) {
     content += `${this.steps[i].name} - ${
       time > 999 ? this.convertToSec(time) : this.convertToMs(time)
     }\n`;
-
-    if ((i + 1) >= length) content += `\n--------------------\n\n`;
+    if ((i + 1) >= length) {
+      content += `\n--------------------\n\n`;
+    }
   }
 
   if (this.options.writeFile) {
@@ -77,7 +78,9 @@ Profiler.prototype.end = function(callback) {
     writeStream.end();
 
     writeStream.on('finish', () => {
-      if (this.cb) this.cb();
+      if (this.cb) {
+        this.cb();
+      }
       this.logger(`SimpleTrace: ${this.name} ended succesfully!`);
     });
 
