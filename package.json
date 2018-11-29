@@ -1,6 +1,6 @@
 {
   "name": "simpletrace",
-  "version": "0.2.3",
+  "version": "0.3.0",
   "description": "Simple but powerful profiling mechanism to find bottlenecks in your code.",
   "main": "./lib/index.js",
   "scripts": {
